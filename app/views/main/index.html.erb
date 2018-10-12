@@ -1,0 +1,28 @@
+<!-- Your code here -->
+
+<% if not @name.nil? %>
+	<h2> Hello, <%= params[:name] %> </h2>
+<% else %>
+	<h2> Hello, world </h2>
+<% end %>
+
+<% if not @w.nil? %>
+	<h1> It is <%= @temp%>F in the city of <%= @city %> </h1>
+<% end %>
+
+<h2> Don't know what to wear, put your city down <h2>
+
+	<%= form_with local: true, method: "get" do |form| %>
+  	<%= form.text_field :city %>
+	<%= form.submit %>
+
+	<% end %>
+
+<h1> 
+
+<% City.all.values.each do |city| %>
+    <% if not city.nil? %>
+    	<h1> <%= city.name %></h1>
+        <p1> It is <%= ((city.weather[:temperature] - 273.15) * 9 / 5 + 32).round(1) %> F with <%= city.weather[:description]%> .</p1>
+    <% end %>
+<% end %>

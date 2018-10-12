@@ -1,0 +1,22 @@
+<% if params[:city].nil? %>
+
+	<h1> You are viewing a list of cities </h1>
+
+	<% if @cities.count == 0 %>
+		Sorry, I have no cities to show.
+	<% else %>
+		<% City.all.values.each do |city| %>
+    		<% if not city.nil? %>
+    			<p1> <%= city.name %> is most famous for the  <%= city.landmark %> and contains <%= city.population %> people. </p1> 
+    			</br>
+    		<% end %>
+		<% end %>
+	<% end %>
+
+<% else %>
+
+	<h1> It is <%= @temp%>F in the city of <%= @city%> </h1>
+
+<% end %>
+
+
